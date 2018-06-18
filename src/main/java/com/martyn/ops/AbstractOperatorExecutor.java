@@ -1,5 +1,6 @@
 package com.martyn.ops;
 
+import com.martyn.ErrType;
 import com.martyn.RpnException;
 
 import java.util.concurrent.ConcurrentLinkedDeque;
@@ -7,7 +8,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 /**
  * Created by martyn on 18-6-17.
  */
-public abstract class AbstractOperatorExecutor implements IOpratorExecuctor {
+public abstract class AbstractOperatorExecutor implements IOperatorExecuctor {
     @Override
     public boolean isValidOp(String opType, ConcurrentLinkedDeque<ConcurrentLinkedDeque<Double>> queueList) throws RpnException {
         return queueList != null &&
@@ -25,9 +26,10 @@ public abstract class AbstractOperatorExecutor implements IOpratorExecuctor {
             curQueue.offerLast(result);
             queueList.offerLast(curQueue);
         } else {
-            throw new RpnException("");
+            throw new RpnException(ErrType.INSUFFIENT_PARAMETER,
+                    String.format("operator %s (position: %d): insufficient parameters", opType, queueList.size()));
         }
     }
 
-    public abstract double calcValue(double s1, double s2);
+    public abstract double calcValue(double s1, double s2) throws RpnException;
 }

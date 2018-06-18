@@ -16,18 +16,18 @@ public class OperatorExecutorFactory {
 
     private OperatorExecutorFactory() {}
 
-    private static Map<String, IOpratorExecuctor> execuctorMap = ImmutableMap.<String, IOpratorExecuctor>builder()
-            .put(OpType.ADD.getValue(), new AddOperatorExecutor())
-            .put(OpType.MINUS.getValue(), new MinusOperationExecutor())
-            .put(OpType.MULTIPLY.getValue(), new MultiplyOperationExecutor())
-            .put(OpType.DIVIDE.getValue(), new DivideOperationExecutor())
-            .put(OpType.SQRT.getValue(), new SqrtOperationExecutor())
-            .put(OpType.CLEAR.getValue(), new ClearOperatorExecutor())
-            .put(OpType.UNDO.getValue(), new UndoOpratorExecutor())
+    private static Map<OpType, IOperatorExecuctor> execuctorMap = ImmutableMap.<OpType, IOperatorExecuctor>builder()
+            .put(OpType.ADD, new AddOperatorExecutor())
+            .put(OpType.MINUS, new MinusOperationExecutor())
+            .put(OpType.MULTIPLY, new MultiplyOperationExecutor())
+            .put(OpType.DIVIDE, new DivideOperationExecutor())
+            .put(OpType.SQRT, new SqrtOperationExecutor())
+            .put(OpType.CLEAR, new ClearOperatorExecutor())
+            .put(OpType.UNDO, new UndoOperatorExecutor())
             .build();
 
-    public IOpratorExecuctor getExecutor(String ops) {
-        return execuctorMap.get(ops);
+    public IOperatorExecuctor getExecutor(String ops) {
+        return execuctorMap.get(OpType.from(ops));
     }
 
 }

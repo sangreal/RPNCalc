@@ -1,5 +1,6 @@
 package com.martyn.ops;
 
+import java.util.Optional;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 /**
@@ -7,7 +8,9 @@ import java.util.concurrent.ConcurrentLinkedDeque;
  */
 public class NumExecutor {
     public static void execute(String ch, ConcurrentLinkedDeque<ConcurrentLinkedDeque<Double>> queueList) {
-        ConcurrentLinkedDeque<Double> curQueue = new ConcurrentLinkedDeque<Double>(queueList.peekLast());
+        ConcurrentLinkedDeque<Double> curQueue = new ConcurrentLinkedDeque<Double>(
+                Optional.ofNullable(queueList.peekLast())
+                        .orElseGet(ConcurrentLinkedDeque::new));
         curQueue.offer(Double.valueOf(ch));
         queueList.offerLast(curQueue);
     }

@@ -2,6 +2,7 @@ package com.martyn;
 
 import com.martyn.ops.NumExecutor;
 import com.martyn.ops.OperatorExecutorFactory;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Optional;
 import java.util.concurrent.ConcurrentLinkedDeque;
@@ -18,6 +19,8 @@ public class CmdProcessor {
     }
 
     public void process(String ch) throws RpnException {
+        if (StringUtils.isAllBlank(ch)) return;
+
         if (Utils.isNumber(ch)) {
             NumExecutor.execute(ch, queueList);
         } else if (Utils.isOperators(ch)) {

@@ -1,5 +1,7 @@
 package com.martyn;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -10,7 +12,7 @@ import java.util.Set;
  */
 public class Utils {
     public static boolean isNumber(String str) {
-        return str.chars().allMatch(Character::isDigit);
+        return StringUtils.isNumeric(str);
     }
 
     public static boolean isOperators(String op) {
