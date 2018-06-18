@@ -31,6 +31,8 @@ public class RPNCalculator {
             }
         } catch (RpnException e) {
             canRunning.set(false);
+            System.out.println(e);
+            StackPrinter.print(queueList.peekLast());
         }
     }
 }
