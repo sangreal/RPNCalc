@@ -32,7 +32,7 @@ public class CmdProcessor {
         Optional.ofNullable(OperatorExecutorFactory
                 .getInstance()
                 .getExecutor(op))
-                .orElseThrow(() -> new RpnException(ErrType.INVALID_OPERATOR, "This is a invalid "))
+                .orElseThrow(() -> new RpnException(ErrType.INVALID_OPERATOR, "This is a invalid operator"))
                 .execute(op, queueList);
     }
 
