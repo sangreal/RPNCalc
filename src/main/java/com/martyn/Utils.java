@@ -17,6 +17,6 @@ public class Utils {
 
     public static boolean isOperators(String op) {
         Set<String> ops = new HashSet<String>(Arrays.asList("+", "-", "*", "/", "sqrt", "undo", "clear"));
-        return ops.contains(op);
+        return ops.contains(StringUtils.lowerCase(op));
     }
 }

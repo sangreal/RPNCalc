@@ -11,8 +11,8 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 public class UndoOperatorExecutor implements IOperatorExecuctor {
     @Override
     public boolean isValidOp(String opType, ConcurrentLinkedDeque<ConcurrentLinkedDeque<Double>> queueList) {
-        return queueList != null &&
-                queueList.size() > 0;
+        return queueList != null
+                && queueList.size() > 0;
     }
 
     @Override

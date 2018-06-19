@@ -10,10 +10,10 @@ import java.util.concurrent.ConcurrentLinkedDeque;
  */
 public abstract class AbstractOperatorExecutor implements IOperatorExecuctor {
     @Override
-    public boolean isValidOp(String opType, ConcurrentLinkedDeque<ConcurrentLinkedDeque<Double>> queueList) throws RpnException {
-        return queueList != null &&
-                queueList.size() > 0 &&
-                queueList.peekLast().size() > 1;
+    public boolean isValidOp(String opType, ConcurrentLinkedDeque<ConcurrentLinkedDeque<Double>> queueList) {
+        return queueList != null
+                && queueList.size() > 0
+                && queueList.peekLast().size() > 1;
     }
 
     @Override

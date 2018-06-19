@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
  */
 public class SqrtOperationExecutor implements IOperatorExecuctor {
     @Override
-    public boolean isValidOp(String opType, ConcurrentLinkedDeque<ConcurrentLinkedDeque<Double>> queueList) throws RpnException {
+    public boolean isValidOp(String opType, ConcurrentLinkedDeque<ConcurrentLinkedDeque<Double>> queueList) {
         return queueList != null
                 && queueList.size() > 0
                 && queueList.peekLast().size() > 0;
@@ -20,7 +20,7 @@ public class SqrtOperationExecutor implements IOperatorExecuctor {
     public void execute(String opType, ConcurrentLinkedDeque<ConcurrentLinkedDeque<Double>> queueList) throws RpnException {
         if (isValidOp(opType, queueList)) {
             ConcurrentLinkedDeque<Double> curQueue = new ConcurrentLinkedDeque<>(queueList.peekLast());
-            double s = curQueue.peekLast();
+            double s = curQueue.pollLast();
             curQueue.offerLast(Math.sqrt(s));
             queueList.offerLast(curQueue);
         } else {

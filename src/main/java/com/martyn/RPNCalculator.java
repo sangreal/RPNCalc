@@ -8,6 +8,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * Created by martyn on 18-6-17.
  */
 public class RPNCalculator {
+
+    // use two doublelinkedlist to record evey state of the stack for undo
     private ConcurrentLinkedDeque<ConcurrentLinkedDeque<Double>> queueList = new ConcurrentLinkedDeque<>();
 
     private CmdProcessor cmdProcessor;
@@ -33,6 +35,7 @@ public class RPNCalculator {
             canRunning.set(false);
             System.out.println(e);
             StackPrinter.print(queueList.peekLast());
+            System.out.println("There is error occurred, no input will be accepted");
         }
     }
 }

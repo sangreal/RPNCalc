@@ -1,5 +1,6 @@
 package com.martyn;
 
+import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
@@ -11,7 +12,12 @@ public class StackPrinter {
         StringBuilder sb = new StringBuilder();
         sb.append("stack: ");
         for (double n : queue) {
-            sb.append(n);
+            if (n % 1 == 0) {
+                sb.append((int)n);
+            } else {
+                sb.append(String.format("%.10f", n));
+            }
+
             sb.append(" ");
         }
         System.out.println(sb.toString());

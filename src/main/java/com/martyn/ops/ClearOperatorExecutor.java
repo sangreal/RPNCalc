@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
  */
 public class ClearOperatorExecutor implements IOperatorExecuctor {
     @Override
-    public boolean isValidOp(String opType, ConcurrentLinkedDeque<ConcurrentLinkedDeque<Double>> queueList) throws RpnException {
+    public boolean isValidOp(String opType, ConcurrentLinkedDeque<ConcurrentLinkedDeque<Double>> queueList) {
         return queueList != null;
     }
 

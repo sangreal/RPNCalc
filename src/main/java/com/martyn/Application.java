@@ -12,6 +12,7 @@ public class Application {
 
     public static void main (String[] args) {
         RPNCalculator rpnCalculator = new RPNCalculator();
+        System.out.println("please input the numbers or operators");
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
             String str = scanner.nextLine();

@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
  * Created by martyn on 18-6-17.
  */
 public interface IOperatorExecuctor {
-    boolean isValidOp(String opType, ConcurrentLinkedDeque<ConcurrentLinkedDeque<Double>> queueList) throws RpnException;
+    boolean isValidOp(String opType, ConcurrentLinkedDeque<ConcurrentLinkedDeque<Double>> queueList);
 
     void execute(String opType, ConcurrentLinkedDeque<ConcurrentLinkedDeque<Double>> queueList) throws RpnException;
 }

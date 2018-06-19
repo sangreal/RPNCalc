@@ -6,7 +6,8 @@ package com.martyn;
 public enum ErrType {
     INVALID_DIVIDE(0),
     INSUFFIENT_PARAMETER(1),
-    STACK_ERROR(2);
+    STACK_ERROR(2),
+    INVALID_OPERATOR(3);
 
 
     private int value;
